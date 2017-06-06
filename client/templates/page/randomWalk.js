@@ -18,8 +18,8 @@ Template.randomWalk.rendered = function() {
 
     console.log("randomWalk randered()");
 
-    tonejs();
-    p5js();
+    tonejs(); // Tone.js for sound
+    p5js(); // p5.js for drawing
 };
 
 
@@ -62,18 +62,50 @@ var tonejs = function() {
 
 var p5js = function() {
 
-    setup = function () {
-        // console.log("setup()");
-        createCanvas(800, 400);
-        background(100, 200, 100);
-    };
+    setup = function() {
+        createCanvas(400, 400);
 
+    }
     p5_object = new p5();
 
-    draw = function () {
-    	background(255, 40);
-        stroke(255, 0, 0);
-        ellipse(width/2, height/2, 100, 100);
+    // Constructor
+    var Walker = function() {
+        this.x = width/2;
+        this.y = height/2;
+    }
+
+    // method
+    Walker.prototype.display = function() {
+        stroke(0, 0, 0);
+        point(this.x, this.y);
+    }
+
+    Walker.prototype.walk = function() {
+        var choice = floor(random(4));
+        if (choice === 0) {
+            this.x++;
+        } else if (choice === 1) {
+            this.x--;
+        } else if (choice === 2) {
+            this.y++;
+        } else {
+            this.y--;
+        }
+    }
+
+    // make instance
+    var w = new Walker();
+
+    draw = function() {
+        drawBoundary();
+        w.walk();
+        w.display();
+    }
+
+    var drawBoundary = function() {
+        stroke(0);
+        noFill();
+        rect(0, 0, width - 1, height - 1);
     }
 
 }

@@ -40,7 +40,7 @@ Template.home.events({
 Template.home.rendered = function() {
 	console.log("Home rendered()");
 
-	tonejs();
+	// tonejs();
 	p5js();
 
 };
@@ -83,7 +83,6 @@ var p5js = function() {
 	var bugs = [];
 	var n = 10;
 
-    // var p5_object = new p5();
     setup = function () {
         console.log("setup()");
         createCanvas(710, 400);
@@ -102,9 +101,8 @@ var p5js = function() {
 
     draw = function () {
         // console.log("draw()");
-    	background(0, 40);
+    	background(255, 40);
 
-        // stroke(255, 255, 0);
         // ellipse(width/2, height/2, 100, 100);
 
     	for(var i = 0; i < bugs.length; i++){
@@ -126,7 +124,7 @@ var p5js = function() {
 	  this.x = random(width);
 	  this.y = random(height);
   	this.r = random(20.0, 26.0);
-		this.bps = 0.01;
+		this.bps = 0.4;
 	  this.diameter = random(10, 30);
 	  this.speed = 1;
 
@@ -143,7 +141,8 @@ var p5js = function() {
 
 	  this.display = function() {
 		//   console.log("display");
-		  stroke(255);
+		  stroke(0);
+          noFill();
 	    ellipse(this.x, this.y, this.diameter, this.diameter);
 	  }
 	};
