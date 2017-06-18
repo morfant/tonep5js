@@ -1,0 +1,6 @@
+env: flex
+runtime: custom
+env_variables:
+        ROOT_URL: https://meteor-tone-p5.appspot-preview.com
+        MONGO_URL: mongodb://morfant:akdyspwm-77@ds113702.mlab.com:13702/tone-test
+        DISABLE_WEBSOCKETS: "1"
